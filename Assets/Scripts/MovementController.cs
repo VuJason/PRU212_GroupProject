@@ -3,57 +3,39 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    public Animator animator;
-
-    // Tham chiếu tới Transform để flip (nếu là nhân vật nhiều layer)
-    public Transform graphicsRoot; // Kéo GameObject chứa các layer vào đây (ví dụ: Root hoặc BodySet)
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-
-        if (animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }
-        // Nếu chưa gán graphicsRoot, mặc định là chính object này
-        if (graphicsRoot == null)
-            graphicsRoot = this.transform;
-    }
+    public float runSpeed = 5f; // tốc độ chạy
+    private bool isFacingRight = true; // trạng thái hướng mặt nhân vật
+    public Animator anim;
 
     void Update()
     {
-        // Lấy input từ bàn phím
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // Nhận input ngang (trái/phải) và dọc (lên/xuống)
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
 
-        // Normal hóa để tránh di chuyển chéo quá nhanh
-        movement = movement.normalized;
+        // Tạo vector di chuyển 2 chiều
+        Vector3 movement = new Vector3(moveX, moveY, 0) * runSpeed * Time.deltaTime;
+        transform.Translate(movement);
 
-        // Debug input
-        // Debug.Log($"Input: {movement}");
-
-        // Cập nhật animation
-        if (animator != null)
+        // Lật nhân vật nếu đi trái/phải
+        if (moveX > 0 && !isFacingRight)
         {
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetFloat("Speed", movement.sqrMagnitude);
+            Flip();
         }
-
-        // Flip đúng hướng: Giả sử hướng mặc định là phải (x=1)
-        if (movement.x > 0)
-            graphicsRoot.localScale = new Vector3(1, graphicsRoot.localScale.y, graphicsRoot.localScale.z);
-        else if (movement.x < 0)
-            graphicsRoot.localScale = new Vector3(-1, graphicsRoot.localScale.y, graphicsRoot.localScale.z);
+        else if (moveX < 0 && isFacingRight)
+        {
+            Flip();
+        }
+        anim.SetFloat("di chuyen", Mathf.Abs(moveX));
     }
 
-    void FixedUpdate()
+
+    void Flip()
     {
-        // Di chuyển nhân vật
-        rb.linearVelocity = movement * moveSpeed;
+        // Đảo hướng mặt nhân vật bằng cách scale X = -1
+        isFacingRight = !isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 }
