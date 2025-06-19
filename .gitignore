@@ -10,6 +10,7 @@ MemoryCaptures/
 UserSettings/
 
 # IDE
+.vs/
 .vscode/
 *.csproj
 *.unityproj
