@@ -44,19 +44,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
-        animator.SetFloat("di chuyen", Mathf.Abs(moveX));
     }
-
 
     void Flip()
     {
-        // Đảo hướng mặt nhân vật bằng cách scale X = -1
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-
     void HandleMovement()
     {
 
