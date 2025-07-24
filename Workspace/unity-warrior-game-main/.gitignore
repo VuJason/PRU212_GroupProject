@@ -1,0 +1,32 @@
+
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+MemoryCaptures/
+UserSettings/
+
+# IDE
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Others
+sysinfo.txt
+.collabignore
+*.apk
+*.aab
+
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!*.meta
