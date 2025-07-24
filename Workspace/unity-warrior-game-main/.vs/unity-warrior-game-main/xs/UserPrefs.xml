@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{4A977F1D-6EE8-3853-7FD0-1F03E622D3D5}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/run.cs">
+    <Files>
+      <File FileName="Assets/run.cs" Line="52" Column="1" />
+      <File FileName="Assets/CameraFollow.cs" />
+      <File FileName="Assets/Menu.cs" Line="11" Column="33" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="unity-warrior-game-main" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="run.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="28d0613c-b9ba-4473-a473-fc1138bf8007" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
